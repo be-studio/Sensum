@@ -1,2 +1,4 @@
 from .base import Base
-from .sponsor import Sponsor
+from .course import *
+from .lecturer import *
+from .sponsor import *
