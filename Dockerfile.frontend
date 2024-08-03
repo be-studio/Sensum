@@ -1,5 +1,5 @@
 # BASE
-FROM --platform=linux/amd64 node:20.16.0 AS base
+FROM node:latest AS base
 LABEL maintainer="Be Studio <hello@its-be-studio.com>"
 LABEL version="1.0"
 WORKDIR /app
@@ -8,13 +8,12 @@ WORKDIR /app
 FROM base AS dependencies
 COPY ./package.json .
 RUN npm install
+EXPOSE 3000
 
 # BUILDS
 # Development
 FROM dependencies AS build
 COPY . /app
-EXPOSE 3000
-CMD ["npm", "start"]
 #RUN useradd -u 1234 non-root
 #USER non-root
 
