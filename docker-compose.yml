@@ -34,3 +34,14 @@ services:
       - "8081:80"
     depends_on:
       - db
+
+  frontend:
+    image: bestudio-sensum-frontend-dev
+    tty: true
+    ports:
+      - "3000:3000"
+    command: [ "npm", "start" ]
+    volumes:
+      - ./:/app
+    depends_on:
+      - backend
