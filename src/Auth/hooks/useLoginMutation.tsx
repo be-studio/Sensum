@@ -1,10 +1,6 @@
 import { useMutation } from "react-query";
 import axios from "axios";
-
-function getCookie(key: string) {
-  var b = document.cookie.match("(^|;)\\s*" + key + "\\s*=\\s*([^;]+)");
-  return b ? b.pop() : "";
-}
+import getCookie from "../../utility/auth/getCookie";
 
 export const useLoginMutation = (username: string, password: string) => {
   return useMutation({
@@ -16,7 +12,7 @@ export const useLoginMutation = (username: string, password: string) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        'X-CSRFToken': getCookie('csrftoken')
+        [import.meta.env.VITE_CSRF_TX]: getCookie(import.meta.env.VITE_CSRF_RX)
       },
       withCredentials: true
     })

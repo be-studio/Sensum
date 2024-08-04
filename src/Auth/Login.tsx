@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 
-import { useCsrfQuery } from "./api/useCsrfQuery";
-import { useLoginMutation } from "./api/useLoginMutation";
+import { useCsrfQuery } from "./hooks/useCsrfQuery";
+import { useLoginMutation } from "./hooks/useLoginMutation";
 
 export const Login = () => {
   const [username, setUsername] = useState("");

@@ -39,4 +39,4 @@ class LoginView(View):
       login(request, user)
       return JsonResponse(self.get_tokens_for_user(user))
     else:
-      return HttpResponse()
+      return HttpResponse(status=403)
