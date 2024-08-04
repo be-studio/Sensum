@@ -9,7 +9,8 @@ services:
     volumes:
       - ./backend:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     platform: linux/amd64
@@ -21,6 +22,12 @@ services:
       MYSQL_USER: "be-admin"
       MYSQL_PASSWORD: "croSPos117LjIjIt+lc7"
       MYSQL_ROOT_PASSWORD: "nO?$7$LPHagl4iju_7+O"
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
     ports:
       - "3306:3306"
     volumes:
@@ -28,6 +35,7 @@ services:
     user: mysql
 
   db_admin:
+    platform: linux/amd64
     image: phpmyadmin/phpmyadmin:latest
     restart: always
     ports:
