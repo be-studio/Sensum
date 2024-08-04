@@ -1,5 +1,5 @@
 # BASE
-FROM node:latest AS base
+FROM node:20.16.0 AS base
 LABEL maintainer="Be Studio <hello@its-be-studio.com>"
 LABEL version="1.0"
 WORKDIR /app
@@ -8,7 +8,6 @@ WORKDIR /app
 FROM base AS dependencies
 COPY ./package.json .
 RUN npm install
-EXPOSE 3000
 
 # BUILDS
 # Development
