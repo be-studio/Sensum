@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.conf import settings
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -30,6 +31,7 @@ class LoginView(View):
     body_unicode: object = request.body.decode("utf-8")
     body = json.loads(body_unicode)
 
+
     user = authenticate(
       username=body["username"],
       password=body["password"]
@@ -37,6 +39,15 @@ class LoginView(View):
 
     if user is not None:
       login(request, user)
-      return JsonResponse(self.get_tokens_for_user(user))
+      tokens = self.get_tokens_for_user(user)
+      response = JsonResponse(tokens["access"], status=200, safe=False)
+      response.set_cookie(key = settings.SIMPLE_JWT['AUTH_COOKIE'],
+        value = self.get_tokens_for_user(user)["refresh"],
+        expires = settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
+        secure = settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+        httponly = settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+        samesite = settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE'])
+      return response
     else:
       return HttpResponse(status=403)
+
