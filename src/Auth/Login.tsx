@@ -8,7 +8,6 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [csrf, setCsrf] = useState("");
 
-  const { data } = useCsrfQuery();
   const { mutateAsync } = useLoginMutation(username, password);
 
   const handleChangeUsername = ({ target }: ChangeEvent<HTMLInputElement>) => {

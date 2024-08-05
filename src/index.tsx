@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from "react-router-dom";
 import { router } from "./utility/router/router";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { AuthProvider } from "./Auth/context/AuthContext";
 
 
 const root = ReactDOM.createRoot(
@@ -16,9 +17,13 @@ const queryClient = new QueryClient();
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+        <RouterProvider router={router} />
+        </AuthProvider>
+      </QueryClientProvider>
+
   </React.StrictMode>
 );
 
