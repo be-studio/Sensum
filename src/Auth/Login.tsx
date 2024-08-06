@@ -1,14 +1,25 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 
-import { useCsrfQuery } from "./hooks/useCsrfQuery";
 import { useLoginMutation } from "./hooks/useLoginMutation";
+import { useAuth } from "./hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 
 export const Login = () => {
+  const auth = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [csrf, setCsrf] = useState("");
+  const navigate = useNavigate();
 
-  const { mutateAsync } = useLoginMutation(username, password);
+  const { data, mutateAsync } = useLoginMutation(username, password);
+
+  useEffect(() => {
+    if(data && data.access) {
+      localStorage.setItem("sensum-access", data.access);
+      navigate("/user");
+    }
+  }, [data]);
 
   const handleChangeUsername = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setUsername(target.value);
@@ -20,7 +31,11 @@ export const Login = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutateAsync();
+    mutateAsync()
+    .then(() => {
+      console.log('noo');
+      auth.login("user");
+    });
   };
 
   return (

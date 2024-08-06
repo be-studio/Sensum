@@ -3,19 +3,23 @@ import { useCsrfQuery } from "../hooks/useCsrfQuery";
 
 interface AuthContextInterface {
   user: any;
-  login: (user: string, callback: VoidFunction) => void;
+  login: (user: string, callback?: VoidFunction) => void;
   logout: (callback: VoidFunction) => void;
 }
 
-export const AuthContext = createContext<AuthContextInterface | null>(null);
+export const AuthContext = createContext<AuthContextInterface>({
+  user: null,
+  login: () => {},
+  logout: () => {}
+});
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<any>(null);
 
-  //const {} = useCsrfQuery();
-
-  const login = (user: string, callback: VoidFunction) => {
-
+  const login = (user: string, callback?: VoidFunction) => {
+    console.log('what');
+    console.log(user);
+    setUser(user);
   };
 
   const logout = (callback: VoidFunction) => {
