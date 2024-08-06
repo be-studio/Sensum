@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import { useAuth } from "./hooks/useAuth";
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import { isExpired, decodeToken } from "react-jwt";
-import { useJwtRefreshMutation } from "./hooks/useJwtRefreshMutation";
+import { useRefreshJwtMutation } from "./hooks/useRefreshJwtMutation";
 
 
 const navigateToLogin = <Navigate to="/login" />;
@@ -12,7 +12,7 @@ export const RequireAuth = ({ children }: PropsWithChildren) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { mutateAsync } = useJwtRefreshMutation();
+  const { mutateAsync } = useRefreshJwtMutation();
 
   const jwt = localStorage.getItem("sensum-access");
 

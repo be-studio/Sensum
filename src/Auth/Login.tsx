@@ -1,7 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 
 import { useLoginMutation } from "./hooks/useLoginMutation";
-import { useUsersQuery } from "../User/hooks/useUsersQuery";
 import { useAuth } from "./hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +13,6 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const { data, mutateAsync } = useLoginMutation(username, password);
-  const { data: users } = useUsersQuery();
 
   useEffect(() => {
     if(data && data.access) {

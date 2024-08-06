@@ -3,10 +3,10 @@ import { api } from "../../utility/auth/api";
 import getCookie from "../../utility/auth/getCookie";
 
 
-export const useJwtRefreshMutation = () => {
+export const useRefreshJwtMutation = () => {
   return useMutation({
-    mutationKey: 'jwt-refresh',
-    mutationFn: () => api.post("/refresh-alt", { }, {
+    mutationKey: 'refresh-jwt',
+    mutationFn: () => api.post("/refresh-jwt", { }, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from ...serializers.cookie_token_refresh_serializer import CookieTokenRefreshSerializer
 
-class CookieTokenRefreshView(TokenRefreshView):
+class RefreshJwtView(TokenRefreshView):
   def finalize_response(self, request, response, *args, **kwargs):
     if response.data.get('refresh'):
       cookie_max_age = 3600 * 24 * 14 # 14 days
