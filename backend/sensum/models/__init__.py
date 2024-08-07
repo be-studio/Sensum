@@ -1,4 +1,7 @@
 from .base import Base
+from .user import *
+from .user_group import *
+from .user_permission import *
 from .course import *
 from .lecturer import *
 from .event import *

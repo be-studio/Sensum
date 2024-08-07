@@ -1,12 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.db import models
-from django.contrib.auth.models import User
 
 from .base import Base
 from .event import Event
 
 class Seat(Base):
   user = models.OneToOneField(
-    User,
+    get_user_model(),
     on_delete=models.PROTECT
   )
   registration_number = models.CharField(
