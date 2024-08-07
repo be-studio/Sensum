@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const auth = useAuth();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [csrf, setCsrf] = useState("");
   const navigate = useNavigate();
 
-  const { data, mutateAsync } = useLoginMutation(username, password);
+  const { data, mutateAsync } = useLoginMutation(email, password);
 
   useEffect(() => {
     if(data && data.access) {
@@ -21,8 +21,8 @@ export const Login = () => {
     }
   }, [data]);
 
-  const handleChangeUsername = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setUsername(target.value);
+  const handleChangeEmail = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setEmail(target.value);
   }
 
   const handleChangePassword = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +43,8 @@ export const Login = () => {
       <h1>Login</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input name="username" type="text" value={username} onChange={handleChangeUsername} />
+        <label htmlFor="email">Email Address</label>
+        <input name="email" type="text" value={email} onChange={handleChangeEmail} />
 
         <label htmlFor="password">Password</label>
         <input name="password" type="password" value={password} onChange={handleChangePassword} />

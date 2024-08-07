@@ -14,17 +14,9 @@ class UsersView(APIView):
     try:
       User = get_user_model()
       users = list(User.objects.all().values(
-        "id",
-        "username",
         "first_name",
         "last_name",
-        "email",
-        "is_active",
-        "is_staff",
-        "is_superuser",
-        "date_joined",
-        "last_login"
-
+        "email"
       ))
     except Exception:
       return HttpResponse(status=404)

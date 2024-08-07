@@ -1,15 +1,14 @@
 import { useMutation } from "react-query";
-import axios from "axios";
 import getCookie from "../../utility/auth/getCookie";
 import { api } from "../../utility/auth/api";
 
 
-export const useLoginMutation = (username: string, password: string) => {
+export const useLoginMutation = (email: string, password: string) => {
   console.log(getCookie(import.meta.env.VITE_CSRF_RX));
   return useMutation({
     mutationKey: 'login',
     mutationFn: () => api.post("/login", {
-        username,
+        email,
         password
       }, {
       headers: {

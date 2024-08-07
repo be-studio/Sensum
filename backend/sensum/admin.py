@@ -75,10 +75,8 @@ class UserChangeForm(forms.ModelForm):
 class EventInline(admin.TabularInline):
   model = Event
 
-class UserEventsInline(admin.StackedInline):
-  model = Event
-  filter_horizontal = ('event',)
-
+class UserEventsInline(admin.TabularInline):
+  model = get_user_model().events.through
 
 class UserAdmin(BaseUserAdmin):
   # The forms to add and change user instances
@@ -88,7 +86,7 @@ class UserAdmin(BaseUserAdmin):
   # The fields to be used in displaying the User model.
   # These override the definitions on the base `UserAdmin` that reference
   # specific fields on `auth.User`.
-  list_display = ("email", "is_staff", "get_events")
+  list_display = ("email", "is_staff")
   list_filter = ("is_staff",)
   fieldsets = (
     (None, {
@@ -107,6 +105,9 @@ class UserAdmin(BaseUserAdmin):
       "fields": ("is_staff",)
     }),
   )
+  inlines = [
+    UserEventsInline
+  ]
   # `add_fieldsets` is not a standard `ModelAdmin` attribute. `UserAdmin`
   # overrides `get_fieldsets` to use this attribute when creating a user.
   add_fieldsets = (
@@ -118,9 +119,6 @@ class UserAdmin(BaseUserAdmin):
   search_fields = ("email",)
   ordering = ("email",)
   filter_horizontal = ()
-
-  def get_events(self,obj):
-    return [event.name for event in obj.events.all()]
 
 class CourseAdmin(admin.ModelAdmin):
   fieldSets = (
@@ -142,11 +140,16 @@ class CourseAdmin(admin.ModelAdmin):
     EventInline
   ]
 
+class EventAdmin(admin.ModelAdmin):
+  inlines= [
+    UserEventsInline
+  ]
+
 admin.site.register(get_user_model(), UserAdmin)
 admin.site.register(Course, CourseAdmin)
+admin.site.register(Event, EventAdmin)
 admin.site.register([
   Lecturer,
-  Event,
   Seat,
   Offer,
   Sponsor,
