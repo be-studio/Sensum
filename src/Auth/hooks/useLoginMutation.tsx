@@ -4,7 +4,6 @@ import { api } from "../../utility/auth/api";
 
 
 export const useLoginMutation = (email: string, password: string) => {
-  console.log(getCookie(import.meta.env.VITE_CSRF_RX));
   return useMutation({
     mutationKey: 'login',
     mutationFn: () => api.post("/login", {
