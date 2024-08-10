@@ -1,8 +1,8 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { useAuth } from "./hooks/useAuth";
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
-import { isExpired, decodeToken } from "react-jwt";
 import { useRefreshJwtMutation } from "./hooks/useRefreshJwtMutation";
+import { useVerifyJwtMutation } from "./hooks/useVerifyJwtMutation";
 
 
 const navigateToLogin = <Navigate to="/login" />;
@@ -13,23 +13,33 @@ export const RequireAuth = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
 
   const { mutateAsync } = useRefreshJwtMutation();
+  const { mutateAsync: verifyJwt } = useVerifyJwtMutation();
 
   const jwt = sessionStorage.getItem("sensum-access");
+  const [isJwtVerified, setIsJwtVerified] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  if(!jwt) {
-    return navigateToLogin;
-  }
+  useEffect(() => {
+    if(!jwt) {
+      setIsAuthenticated(false);
+      setIsJwtVerified(true);
+    }
 
-  if(isExpired(jwt)) {
-    mutateAsync().then(response => {
-      sessionStorage.setItem("sensum-access", response.access);
-      return (<>{children}</>);
+    verifyJwt()
+    .then(() => {
+      setIsAuthenticated(true);
+      setIsJwtVerified(true);
     })
     .catch(() => {
       sessionStorage.removeItem("sensum-access");
-      navigate("/login");
-    });
-  } else {
-    return (<>{children}</>);
+      setIsAuthenticated(false);
+      setIsJwtVerified(true);
+    })
+  }, []);
+
+  if(!isJwtVerified) {
+    return <></>;
   }
+
+  return isAuthenticated ? <>{children}</> : navigateToLogin;
 };
