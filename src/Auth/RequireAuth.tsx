@@ -12,32 +12,40 @@ export const RequireAuth = ({ children }: PropsWithChildren) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { mutateAsync } = useRefreshJwtMutation();
+  const { mutateAsync: refreshJwt } = useRefreshJwtMutation();
   const { mutateAsync: verifyJwt } = useVerifyJwtMutation();
 
   const jwt = sessionStorage.getItem("sensum-access");
-  const [isJwtVerified, setIsJwtVerified] = useState(false);
+  const [isJwtChecked, setIsJwtChecked] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     if(!jwt) {
       setIsAuthenticated(false);
-      setIsJwtVerified(true);
+      setIsJwtChecked(true);
     }
 
     verifyJwt()
     .then(() => {
       setIsAuthenticated(true);
-      setIsJwtVerified(true);
+      setIsJwtChecked(true);
     })
     .catch(() => {
-      sessionStorage.removeItem("sensum-access");
-      setIsAuthenticated(false);
-      setIsJwtVerified(true);
+      refreshJwt()
+      .then(response => {
+        sessionStorage.setItem("sensum-access", response.access);
+        setIsAuthenticated(true);
+        setIsJwtChecked(true);
+      })
+      .catch(() => {
+        sessionStorage.removeItem("sensum-access");
+        setIsAuthenticated(false);
+        setIsJwtChecked(true);
+      })
     })
   }, []);
 
-  if(!isJwtVerified) {
+  if(!isJwtChecked) {
     return <></>;
   }
 
