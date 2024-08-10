@@ -1,6 +1,6 @@
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from ...serializers.refresh_jwt_serializer import RefreshJwtSerializer
-from .refresh_jwt_set_cookie import set_cookie
+from ...utility.cookie_utils import set_cookie
 
 
 class RefreshJwtView(TokenRefreshView):

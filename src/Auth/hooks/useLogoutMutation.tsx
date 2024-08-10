@@ -11,7 +11,7 @@ export const useLogoutMutation = () => {
       mutationFn: () => api.post("/logout", {}, {
         headers: {
           Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("sensum-access")}`,
+          Authorization: `Bearer ${sessionStorage.getItem("sensum-access")}`,
           "Content-Type": "application/json",
           [import.meta.env.VITE_CSRF_TX]: getCookie(import.meta.env.VITE_CSRF_RX)
         },
@@ -22,7 +22,7 @@ export const useLogoutMutation = () => {
       .catch((error) => Promise.reject(error.response?.data)),
       onSuccess: (data) => {
         console.log("logged out");
-        localStorage.removeItem("sensum-access");
+        sessionStorage.removeItem("sensum-access");
       },
       onError: (error) => console.log('Error', error),
     }

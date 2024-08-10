@@ -14,7 +14,7 @@ export const RequireAuth = ({ children }: PropsWithChildren) => {
 
   const { mutateAsync } = useRefreshJwtMutation();
 
-  const jwt = localStorage.getItem("sensum-access");
+  const jwt = sessionStorage.getItem("sensum-access");
 
   if(!jwt) {
     return navigateToLogin;
@@ -22,11 +22,11 @@ export const RequireAuth = ({ children }: PropsWithChildren) => {
 
   if(isExpired(jwt)) {
     mutateAsync().then(response => {
-      localStorage.setItem("sensum-access", response.access);
+      sessionStorage.setItem("sensum-access", response.access);
       return (<>{children}</>);
     })
     .catch(() => {
-      localStorage.removeItem("sensum-access");
+      sessionStorage.removeItem("sensum-access");
       navigate("/login");
     });
   } else {

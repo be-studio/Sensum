@@ -16,7 +16,7 @@ export const Login = () => {
 
   useEffect(() => {
     if(data && data.access) {
-      localStorage.setItem("sensum-access", data.access);
+      sessionStorage.setItem("sensum-access", data.access);
       navigate("/user");
     }
   }, [data]);

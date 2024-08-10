@@ -7,7 +7,7 @@ export const useUsersQuery = () => {
     queryKey: ['users'],
     queryFn: () => api.get("/users", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("sensum-access")}`
+        Authorization: `Bearer ${sessionStorage.getItem("sensum-access")}`
       }
     })
     .then(response => response?.data)
