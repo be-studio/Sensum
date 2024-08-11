@@ -28,3 +28,4 @@ settings.py
 /db
 
 .env
+*.pem

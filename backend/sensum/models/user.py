@@ -149,6 +149,7 @@ class User(AbstractBaseUser):
   email_change_token = models.CharField(max_length=255, blank=True, null=True)
   email_change_token_date_created = models.DateTimeField(blank=True, null=True)
   events = models.ManyToManyField(Event, related_name="events")
+  last_app_login = models.DateTimeField("Date Last Logged into App", blank=True, null=True)
   date_created = models.DateTimeField("Date Created", default=now, editable=False)
   date_updated = models.DateTimeField("Date Updated", auto_now=True, null=True)
 
