@@ -1,10 +1,10 @@
-import { useUsersQuery } from "./hooks/useUsersQuery";
+import { useUserQuery } from "./hooks/useUserQuery";
 import { useLogoutMutation } from "../Auth/hooks/useLogoutMutation";
 import { useNavigate } from "react-router-dom";
 
 
 export const User = () => {
-  const { data: users } = useUsersQuery();
+  const { data: user } = useUserQuery();
   const { mutateAsync: logout, isSuccess, isError } = useLogoutMutation();
   const navigate = useNavigate();
 
@@ -23,6 +23,12 @@ export const User = () => {
       <button onClick={handleLogout}>Logout</button>
 
       <h1>User</h1>
+
+      {user && (
+        <ul>
+          <li>{user.first_name}</li>
+        </ul>
+      )}
     </>
   );
 };

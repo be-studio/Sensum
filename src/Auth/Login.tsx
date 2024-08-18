@@ -3,6 +3,7 @@ import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useLoginMutation } from "./hooks/useLoginMutation";
 import { useAuth } from "./hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { decodeToken } from "react-jwt";
 
 
 export const Login = () => {
@@ -15,7 +16,7 @@ export const Login = () => {
   const { data, mutateAsync } = useLoginMutation(email, password);
 
   useEffect(() => {
-    if(data && data.access) {
+    if(data?.access) {
       sessionStorage.setItem("sensum-access", data.access);
       navigate("/user");
     }
@@ -31,11 +32,7 @@ export const Login = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutateAsync()
-    .then(() => {
-      console.log('noo');
-      auth.login("user");
-    });
+    mutateAsync();
   };
 
   return (
