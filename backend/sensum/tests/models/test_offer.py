@@ -39,7 +39,7 @@ class OfferTestCase(TestCase):
     offer = Offer.objects.get(id=100)
     self.assertEqual(offer.price, 0)
 
-  def test_invalid_price(self):
+  def test_valid_price(self):
     with self.assertRaisesRegex(DataError, createRegex("out of range")):
       event = Event.objects.get(title="Foo Bar")
       Offer.objects.create(
