@@ -21,7 +21,7 @@ services:
       MYSQL_DATABASE: "bedb_sensum"
       MYSQL_USER: "be-admin"
       MYSQL_PASSWORD: "croSPos117LjIjIt+lc7"
-      MYSQL_ROOT_PASSWORD: "nO?$7$LPHagl4iju_7+O"
+      MYSQL_ROOT_PASSWORD: "rootpw"
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
       start_period: 5s
