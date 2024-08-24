@@ -41,10 +41,10 @@ export const Login = () => {
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email Address</label>
-        <input name="email" type="text" value={email} onChange={handleChangeEmail} />
+        <input name="email" type="text" value={email} onChange={handleChangeEmail} aria-label="email" />
 
         <label htmlFor="password">Password</label>
-        <input name="password" type="password" value={password} onChange={handleChangePassword} />
+        <input name="password" type="password" value={password} onChange={handleChangePassword} aria-label="password" />
 
         <button type="submit">Login</button>
       </form>

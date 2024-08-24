@@ -14,7 +14,7 @@ export const User = () => {
       navigate("/login");
     })
     .catch(() => {
-      alert("Unable to logout");
+      console.log("Unable to logout");
     })
   };
 
