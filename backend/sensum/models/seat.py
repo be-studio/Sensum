@@ -4,6 +4,7 @@ from django.db import models
 from .base import Base
 from .event import Event
 
+
 class Seat(Base):
   user = models.OneToOneField(
     get_user_model(),
@@ -21,4 +22,5 @@ class Seat(Base):
   )
 
   def __str__(self):
-    return self.user.get_full_name()
+    user = get_user_model()
+    return user.get_full_name()

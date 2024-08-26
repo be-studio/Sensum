@@ -6,6 +6,7 @@ from .lecturer import Lecturer
 from .sponsor import Sponsor
 from .course_additional_info import CourseAdditionalInfo
 
+
 class Course(Base):
   title = models.CharField(
     unique=True,

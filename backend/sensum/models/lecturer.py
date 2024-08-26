@@ -2,6 +2,7 @@ from django.db import models
 
 from .base import Base
 
+
 class Lecturer(Base):
   name = models.CharField(
     unique=True,

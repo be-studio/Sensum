@@ -24,8 +24,7 @@ class JobTitle(Base):
     unique=True
   )
   description = models.TextField(
-    blank=True,
-    null=True
+    blank=True
   )
 
   class Meta:

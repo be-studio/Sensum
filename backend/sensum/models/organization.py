@@ -11,43 +11,35 @@ class Organization(Base):
   )
   avatar = models.CharField(
     max_length=512,
-    blank=True,
-    null=True
+    blank=True
   )
   email = models.EmailField(
     max_length=255,
-    blank=True,
-    null=True
+    blank=True
   )
   address_street_1 = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   address_street_2 = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   address_street_3 = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   settlement = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   locality = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   postal_code = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   country = models.ForeignKey(
     Country,
@@ -58,21 +50,17 @@ class Organization(Base):
   )
   website = models.CharField(
     max_length=255,
-    blank=True,
-    null=True
+    blank=True
   )
   landline_phone = models.CharField(
     max_length=20,
-    blank=True,
-    null=True
+    blank=True
   )
   extension = models.CharField(
     max_length=8,
-    blank=True,
-    null=True
+    blank=True
   )
   mobile_phone = models.CharField(
     max_length=20,
-    blank=True,
-    null=True
+    blank=True
   )

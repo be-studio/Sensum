@@ -3,6 +3,7 @@ from django.db import models
 from .base import Base
 from .event import Event
 
+
 class Offer(Base):
   price = models.DecimalField(
     max_digits=7,
@@ -18,5 +19,5 @@ class Offer(Base):
   )
 
   def __str__(self):
-    DESC_LIMIT = 20
-    return f"{self.price} - {(self.description[:DESC_LIMIT] + "...") if len(self.description) > DESC_LIMIT else self.description}"
+    desc_limit = 20
+    return f"{self.price} - {(self.description[:desc_limit] + "...") if len(self.description) > desc_limit else self.description}"

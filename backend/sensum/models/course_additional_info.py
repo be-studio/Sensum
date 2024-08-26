@@ -2,6 +2,7 @@ from django.db import models
 
 from .base import Base
 
+
 class CourseAdditionalInfo(Base):
   title = models.CharField(
     max_length=120

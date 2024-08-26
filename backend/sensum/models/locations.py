@@ -9,13 +9,11 @@ class Country(Base):
   )
   alt_name = models.CharField(
     max_length=128,
-    blank=True,
-    null=True
+    blank=True
   )
   iso_code = models.CharField(
     max_length=6,
-    blank=True,
-    null=True
+    blank=True
   )
 
 
@@ -29,6 +27,5 @@ class Department(Base):
     unique=True
   )
   description = models.TextField(
-    blank=True,
-    null=True
+    blank=True
   )

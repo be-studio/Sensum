@@ -3,6 +3,7 @@ from django.db import models
 from .base import Base
 from .course import Course
 
+
 class Event(Base):
   title = models.CharField(
     unique=True,
