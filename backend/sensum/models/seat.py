@@ -22,5 +22,4 @@ class Seat(Base):
   )
 
   def __str__(self):
-    user = get_user_model()
-    return user.get_full_name()
+    return self.user.get_full_name()
