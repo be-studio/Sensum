@@ -21,6 +21,7 @@ This project has been constructed and maintained using the following technologie
   )
 - Python 3.12
 - MySQL
+- Django and Unittest for tests
 
 ## Developer Usage
 
