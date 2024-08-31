@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Sensum BE Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an application designed and developed by [BE Studio](https://www.its-be-studio.com).
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+This project has been constructed and maintained using the following technologies:
 
-### `npm start`
+### Frontend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React](https://www.reactjs.org) (In use: v18.3.1; Stable latest: ![React](https://img.shields.io/npm/v/react.svg?label=React&logo=react&style=social)) using the 'Create React App' utility with conversion to a Vite application.
+- [TypeScript](https://www.typescriptlang.org) (In use: v4.9.5; Stable latest:  ![TypeScript](https://img.shields.io/npm/v/typescript.svg?label=TypeScript&logo=typescript&style=social))
+- JavaScript ECMAScript 2015+
+- HTML5
+- CSS3
+- [Vitest](https://www.vitest.dev) and [React Testing Library](https://testing-library.com) for tests
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Backend
 
-### `npm test`
+- [Django](https://www.djangoproject.com) (In use: v5.0.4; Stable latest: ![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/Django?style=social&logo=django&label=Django)
+  )
+- Python 3.12
+- MySQL
+- Django and Unittest for tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Developer Usage
 
-### `npm run build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the React application at [http://localhost:3000](http://localhost:3000):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the available tests:
 
-### `npm run eject`
+```shell
+npm test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the associated Storybook, to view the UI components library, at [http://localhost:6006](http://localhost:6006):
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```shell
+npm run storybook
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To build the application for production:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```shell
+npm run build
+```
 
-## Learn More
+To build the associated Storybook for deployment:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```shell
+npm run build-storybook
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Backend
+
+To run the Django application at [http://localhost:8000](http://localhost:8000), issue the following command from the `backend` folder:
+
+```shell
+python manage.py runserver
+```
+
+## Enquiries
+
+If you wish to find out more about this or other projects built by BE Studio, or more about our work, then please contact us at [https://www.its-be-studio.com](https://www.its-be-studio.com).

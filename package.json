@@ -5,22 +5,31 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.96",
+    "@types/node": "^18.0.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "axios": "^1.7.3",
     "react": "^18.3.1",
+    "react-cookie": "^7.2.0",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
+    "react-jwt": "^1.2.2",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.26.0",
     "typescript": "^4.9.5",
+    "vite": "^5.3.5",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage --watch=false"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +48,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.0.5",
+    "braces": ">=3.0.3",
+    "jsdom": "^24.1.1",
+    "micromatch": ">=4.0.8",
+    "nth-check": ">=2.0.1",
+    "postcss": ">=8.4.31",
+    "vite-plugin-mkcert": "^1.17.5",
+    "vitest": "^2.0.5",
+    "webpack": ">=5.94.0",
+    "ws": ">=8.17.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   }
 }

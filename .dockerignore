@@ -1,0 +1,7 @@
+**/.idea
+.vscode
+**/backend
+node_modules
+venv
+.dockerignore
+Dockerfile*

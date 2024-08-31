@@ -1,0 +1,38 @@
+# BE STUDIO WEB APPLICATION
+# LONDON MOVING
+#
+# Backend Dockerfile
+#
+# Author: Eric L.
+# Copyright: (C)2022, BE Studio
+# See: its-be-studio.com
+
+# BASE
+FROM python:3.12.3-alpine AS base
+WORKDIR /app
+
+# DEPENDENCIES
+FROM base AS dependencies
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt && \
+  rm -rf /root/.cache
+
+# BUILDS
+# Development
+FROM dependencies AS build
+COPY ./docker/base.py /usr/local/lib/python3.9/site-packages/django/db/backends/mysql/
+
+# Production
+FROM python:3.12.3-slim AS release
+WORKDIR /app
+COPY --from=dependencies /app/requirements.txt ./
+RUN apt-get install g++ && \
+  pip install --no-cache-dir -r requirements.txt && \
+  rm -rf /root/.cache
+COPY ./docker/base.py /usr/local/lib/python3.8/site-packages/django/db/backends/mysql/
+COPY . /app
+WORKDIR /app
+COPY ./docker/wsgi.py ./backend/
+COPY ./docker/settings.py ./backend/
+RUN mkdir -p static && \
+  python manage.py collectstatic

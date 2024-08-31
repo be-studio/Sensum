@@ -1,0 +1,56 @@
+services:
+  backend:
+    image: bestudio-sensum-backend-dev
+    tty: true
+    ports:
+      - "8000:8000"
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    restart: always
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    platform: linux/amd64
+    image: mysql:8.0.36
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: "bedb_sensum"
+      MYSQL_USER: "be-admin"
+      MYSQL_PASSWORD: "croSPos117LjIjIt+lc7"
+      MYSQL_ROOT_PASSWORD: "rootpw"
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    user: mysql
+
+  db_admin:
+    platform: linux/amd64
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+
+  frontend:
+    image: bestudio-sensum-frontend-dev
+    tty: true
+    ports:
+      - "3000:3000"
+    command: [ "npm", "start" ]
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - backend

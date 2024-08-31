@@ -3,13 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider } from "react-router-dom";
+import { router } from "./utility/router/router";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { AuthProvider } from "./Auth/context/AuthContext";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+});
+
 root.render(
   <React.StrictMode>
-    <App />
+
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+        <RouterProvider router={router} />
+        </AuthProvider>
+      </QueryClientProvider>
+
   </React.StrictMode>
 );
 
