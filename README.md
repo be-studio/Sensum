@@ -8,7 +8,7 @@ This project has been constructed and maintained using the following technologie
 
 ### Frontend
 
-- [React](https://www.reactjs.org) (In use: v18.3.1; Stable latest: ![React](https://img.shields.io/npm/v/react.svg?label=React&logo=react&style=social)) using the 'Create React App' utility.
+- [React](https://www.reactjs.org) (In use: v18.3.1; Stable latest: ![React](https://img.shields.io/npm/v/react.svg?label=React&logo=react&style=social)) using the 'Create React App' utility with conversion to a Vite application.
 - [TypeScript](https://www.typescriptlang.org) (In use: v4.9.5; Stable latest:  ![TypeScript](https://img.shields.io/npm/v/typescript.svg?label=TypeScript&logo=typescript&style=social))
 - JavaScript ECMAScript 2015+
 - HTML5
