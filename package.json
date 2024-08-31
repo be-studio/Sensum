@@ -51,9 +51,12 @@
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^2.0.5",
+    "braces": ">=3.0.3",
     "jsdom": "^24.1.1",
+    "nth-check": ">=2.0.1",
     "vite-plugin-mkcert": "^1.17.5",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "ws": ">=8.17.1"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.6.1"
