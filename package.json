@@ -53,9 +53,12 @@
     "@vitest/coverage-v8": "^2.0.5",
     "braces": ">=3.0.3",
     "jsdom": "^24.1.1",
+    "micromatch": ">=4.0.8",
     "nth-check": ">=2.0.1",
+    "postcss": ">=8.4.31",
     "vite-plugin-mkcert": "^1.17.5",
     "vitest": "^2.0.5",
+    "webpack": ">=5.94.0",
     "ws": ">=8.17.1"
   },
   "optionalDependencies": {
