@@ -25,7 +25,7 @@ This project has been constructed and maintained using the following technologie
 
 ### Code Quality & Security Analysis
 
-This repository is being monitored with SonarCloud and SonarLint.
+This repository is being monitored with SonarCloud and SonarLint:
 
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=be-studio_Sensum)
 
