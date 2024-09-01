@@ -29,7 +29,10 @@ class UserTestCase(TestCase):
     self.assertEqual(john.first_name, "John")
     self.assertEqual(john.last_name, "Doe")
     self.assertEqual(john.email, "john.doe@email.com")
-    self.assertQuerySetEqual(john.user_groups.all(), [UserGroup.objects.get(group="group")])
+    self.assertQuerySetEqual(
+      john.user_groups.all(), [
+        UserGroup.objects.get(group="group")]
+    )
 
   def test_get_full_user_name(self):
     user = get_user_model()

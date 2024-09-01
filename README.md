@@ -17,11 +17,25 @@ This project has been constructed and maintained using the following technologie
 
 ### Backend
 
-- [Django](https://www.djangoproject.com) (In use: v5.0.4; Stable latest: ![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/Django?style=social&logo=django&label=Django)
+- [Django](https://www.djangoproject.com) (In use: v5.0.8; Stable latest: ![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/Django?style=social&logo=django&label=Django)
   )
 - Python 3.12
 - MySQL
 - Django and Unittest for tests
+
+### Code Quality & Security Analysis
+
+This repository is being monitored with SonarCloud and SonarLint.
+
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=be-studio_Sensum)
+
+#### Current Status
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=be-studio_Sensum&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=be-studio_Sensum)
+
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=be-studio_Sensum&metric=bugs)](https://sonarcloud.io/summary/new_code?id=be-studio_Sensum)
+
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=be-studio_Sensum&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=be-studio_Sensum)
 
 ## Developer Usage
 
