@@ -51,9 +51,18 @@ class CourseTestCase(TestCase):
     self.assertEqual(course.primary_subtitle, "Hello World")
     self.assertEqual(course.secondary_subtitle, "Foo Bar")
     self.assertEqual(course.duration, timedelta(hours=1))
-    self.assertQuerySetEqual(course.audience_groups.all(), [Group.objects.get(name="Visitors")])
-    self.assertQuerySetEqual(course.lecturers.all(), [Lecturer.objects.get(name="Jane Brown")])
-    self.assertQuerySetEqual(course.sponsors.all(), [Sponsor.objects.get(name="Toothpaste")])
+    self.assertQuerySetEqual(
+      course.audience_groups.all(), [
+        Group.objects.get(name="Visitors")]
+    )
+    self.assertQuerySetEqual(
+      course.lecturers.all(), [
+        Lecturer.objects.get(name="Jane Brown")]
+    )
+    self.assertQuerySetEqual(
+      course.sponsors.all(), [
+        Sponsor.objects.get(name="Toothpaste")]
+    )
     self.assertEqual(course.about_description, "This is a course for everyone")
     self.assertEqual(course.additional_info, CourseAdditionalInfo.objects.get(title="Extra"))
 
