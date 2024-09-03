@@ -19,5 +19,5 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          args: --profile-path,/.qodana/qodana.recommended.all.yaml
+          args: --profile-path,.qodana/qodana.recommended.all.yaml
           pr-mode: false
