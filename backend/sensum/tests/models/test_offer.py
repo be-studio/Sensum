@@ -8,7 +8,7 @@ from ...models import Offer, Event
 
 class OfferTestCase(TestCase):
   def setUp(self):
-    event = Event.objects.create(
+    Event.objects.create(
       title="Foo Bar",
       time=time(12, 10),
       date=date(2024, 1, 2)

@@ -52,6 +52,6 @@ class SeatTestCase(TestCase):
       self.create_seat("x" * 61)
 
   def test_get_default_string(self):
-    seat = self.create_seat();
+    seat = self.create_seat()
 
     self.assertEqual(seat.__str__(), "John Doe")

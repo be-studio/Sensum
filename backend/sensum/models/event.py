@@ -6,12 +6,10 @@ from .course import Course
 
 class Event(Base):
   title = models.CharField(
-    unique=True,
-    max_length=60
+    unique=True, max_length=60
   )
   subtitle = models.CharField(
-    blank=True,
-    max_length=120
+    blank=True, max_length=120
   )
   time = models.TimeField(
     blank=True
@@ -20,16 +18,11 @@ class Event(Base):
     blank=True
   )
   location = models.CharField(
-    blank=True,
-    max_length=90
+    blank=True, max_length=90
   )
   course = models.ForeignKey(
-    Course,
-    on_delete=models.CASCADE,
-    blank=True,
-    null=True
+    Course, on_delete=models.CASCADE, blank=True, null=True
   )
-
 
   def __str__(self):
     return self.title
