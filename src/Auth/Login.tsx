@@ -1,16 +1,12 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 
 import { useLoginMutation } from "./hooks/useLoginMutation";
-import { useAuth } from "./hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { decodeToken } from "react-jwt";
 
 
 export const Login = () => {
-  const auth = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [csrf, setCsrf] = useState("");
   const navigate = useNavigate();
 
   const { data, mutateAsync } = useLoginMutation(email, password);
